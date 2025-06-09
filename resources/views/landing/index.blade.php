@@ -50,7 +50,7 @@
                         <a class="nav-link" href="#how-it-works">How It Works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pricing">Pricing</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
                     <li class="nav-item ms-3">
                         <a class="btn btn-signup" href="/signup">

@@ -7,14 +7,26 @@ use App\Http\Controllers\MarketDataController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\TradingController;
 use App\Http\Controllers\WalletController;
-use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('landing.index');
 })->name('landing.index');
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -42,7 +54,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
 
-    Route::get('/history', [HistoryController::class, 'index'])->name('history');
+    Route::get('/history', [TransactionController::class, 'index'])->name('history');
+    Route::get('/history/export', [TransactionController::class, 'export'])->name('history.export');
 
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
 
