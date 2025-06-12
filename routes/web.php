@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\CryptoDepositController;
 use App\Http\Controllers\ProfileController;
@@ -9,6 +8,12 @@ use App\Http\Controllers\TradingController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\AssetController;
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -27,6 +32,15 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+Route::prefix('admin')->middleware(['auth', ])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('users', UserController::class)->names('admin.users');
+    Route::resource('transactions', AdminTransactionController::class)->names('admin.transactions')->only(['index', 'show']);
+    Route::resource('orders', OrderController::class)->names('admin.orders')->only(['index', 'show']);
+    Route::resource('assets', AssetController::class)->names('admin.assets');
+    Route::get('/logs', [LogController::class, 'index'])->name('admin.logs.index');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {

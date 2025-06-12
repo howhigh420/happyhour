@@ -37,7 +37,7 @@
                 <h3>Recent Transactions</h3>
                 <a href="{{ route('history') }}" class="btn btn-primary">View All</a>
             </div>
-            <table class="table transactions-table">
+            <table class="table-container transactions-table">
                 <thead>
                     <tr>
                         <th>Transaction ID</th>
