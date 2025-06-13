@@ -319,29 +319,9 @@
 </div>
 
 <style>
-.border-left-primary { border-left: 0.25rem solid #4e73df !important; }
-.border-left-success { border-left: 0.25rem solid #1cc88a !important; }
-.border-left-info { border-left: 0.25rem solid #36b9cc !important; }
-.border-left-warning { border-left: 0.25rem solid #f6c23e !important; }
-.border-left-danger { border-left: 0.25rem solid #e74a3b !important; }
+ /* Modern Admin Panel CSS - User Edit Page */
 
-.form-switch .form-check-input {
-    width: 3em;
-    height: 1.5em;
-}
-
-.card {
-    border: none;
-    border-radius: 0.75rem;
-}
-
-.img-profile {
-    transition: all 0.3s ease;
-}
-
-.img-profile:hover {
-    transform: scale(1.05);
-}
+/* CSS Variables for Theme */
 </style>
 
 

@@ -261,6 +261,10 @@
     </div>
 </div>
 
+<style>
+
+</style>
+
 <script>
     function deleteUser(userId, userName) {
     document.getElementById('deleteUserName').textContent = userName;

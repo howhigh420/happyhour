@@ -309,6 +309,12 @@
     </div>
 </div>
 
+<style>
+    /* User Management Dashboard CSS */
+
+/* ===== GLOBAL VARIABLES ===== */
+</style>
+
 <script>
 // Initialize tooltips
 document.addEventListener('DOMContentLoaded', function() {
